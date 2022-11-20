@@ -4,7 +4,26 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
+		<title>Reflex Game</title>
+		<link rel="stylesheet" href="styles.css" />
+		<script src="reflex-game.js" defer></script>
 	</head>
-	<body></body>
+	<body>
+		<div id="game-container">
+			<div id="game-area">
+				<div id="game-popup-box" onclick="startGame()">
+					<h1 id="game-popup-text">Start Game</h1>
+				</div>
+				<div id="game-target" onclick="targetClick()"></div>
+			</div>
+			<div id="score-display">
+				<h2>TIME REMAINING:</h2>
+				<p id="time-number"></p>
+				<h2>SCORE:</h2>
+				<p id="score-number"></p>
+				<h2>HIGH SCORE</h2>
+				<p id="high-score-number"></p>
+			</div>
+		</div>
+	</body>
 </html>

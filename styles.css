@@ -1,0 +1,42 @@
+#game-container {
+	display: flex;
+	width: 960px;
+	height: 400px;
+}
+
+#game-area {
+	flex: 1;
+	background-color: blue;
+}
+
+#game-target {
+	display: none;
+	position: relative;
+	width: 50px;
+	height: 50px;
+	top: 50%;
+	left: 50%;
+	background-color: white;
+	border-radius: 100%;
+	cursor: pointer;
+}
+
+#score-display {
+	flex: 0.3;
+}
+
+#score-number {
+}
+
+#time-number {
+}
+
+#high-score-number {
+}
+
+/* //30s timer
+//random positioned and sized circles
+//onclick changes position and size
+//clicks counted and displayed
+//on time out, show score, option to reset
+// display highest score for session */
