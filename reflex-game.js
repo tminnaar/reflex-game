@@ -5,12 +5,12 @@ const highScoreDisplay = document.getElementById("high-score-number");
 const gamePopUp = document.getElementById("game-popup-box");
 const gamePopUpText = document.getElementById("game-popup-text");
 
-const maxTargetSize = 100;
+const maxTargetSize = 160;
 const minTargetSize = 60;
 
 const maxPosition = 75;
 
-const timerMaxLength = 5;
+const timerMaxLength = 30;
 
 let currentScore = 0;
 let timeRemaining = 0;
@@ -47,12 +47,13 @@ function startGame() {
 	setTimeout(() => {
 		clearInterval(timerInterval);
 		target.style.display = "none";
-		gamePopUp.style.display = "block";
+		gamePopUp.style.display = "flex";
 		gamePopUpText.textContent = "Try Again?";
 
 		if (currentScore > currentHighScore) {
 			currentHighScore = currentScore;
 			highScoreDisplay.textContent = currentHighScore;
+			gamePopUpText.textContent = "🎉New High Score!🎉Try Again?";
 		}
 	}, timerMaxLength * 1000);
 }

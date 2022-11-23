@@ -6,13 +6,16 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Reflex Game</title>
 		<link rel="stylesheet" href="styles.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
 		<script src="reflex-game.js" defer></script>
 	</head>
 	<body>
 		<div id="game-container">
 			<div id="game-area">
-				<div id="game-popup-box" onclick="startGame()">
-					<h1 id="game-popup-text">Start Game</h1>
+				<div id="game-popup-box">
+					<h1 id="game-popup-text" onclick="startGame()">Start Game</h1>
 				</div>
 				<div id="game-target" onclick="targetClick()"></div>
 			</div>
