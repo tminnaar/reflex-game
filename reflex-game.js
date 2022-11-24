@@ -8,7 +8,7 @@ const gamePopUpText = document.getElementById("game-popup-text");
 const maxTargetSize = 160;
 const minTargetSize = 60;
 
-const maxPosition = 75;
+const maxPosition = 60;
 
 const timerMaxLength = 30;
 
