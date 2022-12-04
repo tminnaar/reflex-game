@@ -16,7 +16,7 @@ I started out grabbing references for all elements I'd need to update or alter, 
 I gave the target sizes a range to randomise between and a maximum position value so the target would remain fully within the game area.
 Following that, I then created the targetClick function.
 
-```
+``` javascript
 function targetClick() {
 	const targetSize = Math.floor(Math.random() * (maxTargetSize - minTargetSize)) + minTargetSize;
 	target.style.width = target.style.height = `${targetSize}px`;
@@ -34,7 +34,7 @@ function targetClick() {
 
 This function uses Math.floor(Math.random() and my maximum size and position values to randomise them and then using string interpolation it pushes the values into their respective elements. Clicking the target increments the score value and pushes that and update the number in the score display.
 
-```
+``` javascript
 function startGame() {
 	currentScore = 0;
 	scoreDisplay.textContent = currentScore;
