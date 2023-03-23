@@ -17,7 +17,7 @@ I gave the target sizes a range to randomise between and a maximum position valu
 Following that, I then created the targetClick function.
 
 ```javascript
-function targetClick() {
+function targetClick(event) {
 	const targetSize = Math.floor(Math.random() * (maxTargetSize - minTargetSize)) + minTargetSize;
 	target.style.width = target.style.height = `${targetSize}px`;
 
@@ -27,12 +27,22 @@ function targetClick() {
 	target.style.top = `${targetTop}%`;
 	target.style.left = `${targetLeft}%`;
 
-	currentScore++;
-	scoreDisplay.textContent = currentScore;
+	let bonus = Math.floor(currentStreak / 5) + 1;
+	currentScore += bonus;
+	currentStreak++;
+
+	scoreDisplay.textContent = `${currentScore} + ${bonus}`;
+	currentStreakCount.textContent = currentStreak;
+
+	event.stopPropagation();
+}
+
+function targetMiss() {
+	currentStreak = 0;
 }
 ```
 
-This function uses Math.floor(Math.random() and my maximum size and position values to randomise them and then using string interpolation it pushes the values into their respective elements. Clicking the target increments the score value and pushes that and update the number in the score display.
+This function uses Math.floor(Math.random()) and my maximum size and position values to randomise them and then using string interpolation it pushes the values into their respective elements.Clicking the target increments the score value, streak counter and modifier and pushes those values to the score display panel. As the users' score streak increases, a modifier increases the score per successful click. targetMiss() then resets the modifier to 0.
 
 ```javascript
 function startGame() {
