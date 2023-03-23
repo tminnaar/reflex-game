@@ -16,7 +16,7 @@ I started out grabbing references for all elements I'd need to update or alter, 
 I gave the target sizes a range to randomise between and a maximum position value so the target would remain fully within the game area.
 Following that, I then created the targetClick function.
 
-``` javascript
+```javascript
 function targetClick() {
 	const targetSize = Math.floor(Math.random() * (maxTargetSize - minTargetSize)) + minTargetSize;
 	target.style.width = target.style.height = `${targetSize}px`;
@@ -34,7 +34,7 @@ function targetClick() {
 
 This function uses Math.floor(Math.random() and my maximum size and position values to randomise them and then using string interpolation it pushes the values into their respective elements. Clicking the target increments the score value and pushes that and update the number in the score display.
 
-``` javascript
+```javascript
 function startGame() {
 	currentScore = 0;
 	scoreDisplay.textContent = currentScore;
@@ -43,7 +43,7 @@ function startGame() {
 	gamePopUp.style.display = "none";
 
 	timeRemaining = timerMaxLength;
-    timeDisplay.textContent = `${timeRemaining}s`;
+	timeDisplay.textContent = `${timeRemaining}s`;
 
 	const timerInterval = setInterval(() => {
 		timeRemaining--;
@@ -69,4 +69,6 @@ startGame() initilises the game on page load and at the end of the countdown. Th
 
 ### Debugging
 
-I only ran into one error in this project. At first, I noticed the target was sometimes positioned halfway outside the game area. Initially I ran the game and console.logged targetLeft and targetTop to dial in their maximum values to prevent this from occurring. I then realised that if I worked out what percentage the maximum potential height/width of the target was of the total game area, I could set maximum position value to be the percentage difference.
+At first, I noticed the target was sometimes positioned halfway outside the game area. Initially I ran the game and console.logged targetLeft and targetTop to dial in their maximum values to prevent this from occurring. I then realised that if I worked out what percentage the maximum potential height/width of the target was of the total game area, I could set maximum position value to be the percentage difference.
+
+The second error I encountered came when adding in functionality for a streak bonus that would reset when the user would miss the target. I added an onclick function called 'targetMiss' that would trigger when the game area was clicked instead of the target, but it still triggered a miss even when the target was clicked. I realised this by logging "missed" inside the 'targetMiss'. I Googled "onclick event called on parent" and came accross a few StackOverflow posts that suggested using 'event.stopPropagation()' which would prevent any other listeners higher in the DOM from receiving the event.
