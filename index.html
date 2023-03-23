@@ -13,19 +13,22 @@
 	</head>
 	<body>
 		<div id="game-container">
-			<div id="game-area">
+			<div id="game-area" onclick="targetMiss()">
 				<div id="game-popup-box">
-					<h1 id="game-popup-text" onclick="startGame()">Start Game</h1>
+					<h1 id="game-popup-text" onclick="startGame()">Insert Coin</h1>
 				</div>
-				<div id="game-target" onclick="targetClick()"></div>
+				<div id="game-target" onclick="targetClick(event)"></div>
+				<div id="bonus-target"></div>
 			</div>
 			<div id="score-display">
 				<h2>TIME REMAINING:</h2>
-				<p id="time-number"></p>
+				<p id="time-number">Insert Coin</p>
 				<h2>SCORE:</h2>
-				<p id="score-number"></p>
+				<p id="score-number">0</p>
+				<h2>Streak:</h2>
+				<p id="streak-number">0</p>
 				<h2>HIGH SCORE</h2>
-				<p id="high-score-number"></p>
+				<p id="high-score-number">0</p>
 			</div>
 		</div>
 	</body>

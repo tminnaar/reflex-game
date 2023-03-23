@@ -4,6 +4,8 @@ const timeDisplay = document.getElementById("time-number");
 const highScoreDisplay = document.getElementById("high-score-number");
 const gamePopUp = document.getElementById("game-popup-box");
 const gamePopUpText = document.getElementById("game-popup-text");
+const bonusTarget = document.getElementById("bonus-target");
+const currentStreakCount = document.getElementById("streak-number");
 
 const maxTargetSize = 160;
 const minTargetSize = 60;
@@ -13,11 +15,12 @@ const maxPosition = 60;
 const timerMaxLength = 30;
 
 let currentScore = 0;
+let currentStreak = 0;
 let timeRemaining = 0;
 let currentHighScore = 0;
 
 //clicking the target randomises its size and position within a range. string interpolation pushes the generated values into the stylings. score value is increased when clicked.
-function targetClick() {
+function targetClick(event) {
 	const targetSize = Math.floor(Math.random() * (maxTargetSize - minTargetSize)) + minTargetSize;
 	target.style.width = target.style.height = `${targetSize}px`;
 
@@ -27,8 +30,21 @@ function targetClick() {
 	target.style.top = `${targetTop}%`;
 	target.style.left = `${targetLeft}%`;
 
-	currentScore++;
-	scoreDisplay.textContent = currentScore;
+	//after every 5 successfull hits, increases score per hit by 1
+	let bonus = Math.floor(currentStreak / 5) + 1;
+	currentScore += bonus;
+	currentStreak++;
+
+	scoreDisplay.textContent = `${currentScore} + ${bonus}`;
+	currentStreakCount.textContent = currentStreak;
+
+	//prevents event triggering on parent
+	event.stopPropagation();
+}
+
+//resets streak bonus counter when target is missed
+function targetMiss() {
+	currentStreak = 0;
 }
 
 //initialises the game, resets the timer and current score.
