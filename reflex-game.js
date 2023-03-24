@@ -50,6 +50,8 @@ function targetMiss() {
 //initialises the game, resets the timer and current score.
 function startGame() {
 	currentScore = 0;
+	currentStreak = 0;
+	currentStreakCount.textContent = currentStreak;
 	scoreDisplay.textContent = currentScore;
 
 	//hides the menu pop-up.
